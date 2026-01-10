@@ -1,9 +1,9 @@
 <template>
-  <Link href="/">
-    Home
+  <Link href="/listing">
+    Listing
   </Link>&nbsp;
-  <Link href="/show">
-    Show
+  <Link href="/listing/create">
+    Create Listing
   </Link>
   <div v-if="flashSuccess" class="success">
     {{ flashSuccess }}

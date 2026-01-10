@@ -1,24 +1,28 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 
-const form = useForm({
-  beds: 0,
-  baths: 0,
-  area: 0,
-  city: null,
-  code: null,
-  street: null,
-  neighborhood: null,
-  price: 0,
+const props = defineProps({
+  listing: Object,
 });
 
-function create() {
-  form.post(route('listing.store'));
+const form = useForm({
+  beds: props.listing.beds,
+  baths: props.listing.baths,
+  area: props.listing.area,
+  city: props.listing.city,
+  code: props.listing.code,
+  street: props.listing.street,
+  neighborhood: props.listing.neighborhood,
+  price: props.listing.price,
+});
+
+function update() {
+  form.put(route('listing.update', props.listing.id));
 }
 </script>
 
 <template>
-  <form @submit.prevent="create">
+  <form @submit.prevent="update">
     <div>
       <div>
         <label>Beds</label>
@@ -85,7 +89,7 @@ function create() {
       </div>
 
       <div>
-        <button type="submit">Create</button>
+        <button type="submit">Edit</button>
       </div>
     </div>
   </form>

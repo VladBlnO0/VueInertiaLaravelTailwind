@@ -68,7 +68,12 @@ class ListingController extends Controller
    */
   public function edit(Listing $listing)
   {
-    //
+    return inertia(
+      'Listing/edit-page',
+      [
+        'listing' => $listing
+      ]
+    );
   }
 
   /**
@@ -76,7 +81,20 @@ class ListingController extends Controller
    */
   public function update(Request $request, Listing $listing)
   {
-    //
+    $listing->update(
+      $request->validate([
+        'beds' => 'required|integer|max:5',
+        'baths' => 'required|integer|max:5',
+        'area' => 'required|integer|min:15|max:1500',
+        'price' => 'required|integer|min:1000|max:10000000',
+        'code' => 'required',
+        'neighborhood' => 'required',
+        'city' => 'required',
+        'street' => 'required',
+      ]),
+    );
+    return redirect()->route('listing.index')
+      ->with('success', 'Listing updated successfully!');
   }
 
   /**
@@ -84,6 +102,9 @@ class ListingController extends Controller
    */
   public function destroy(Listing $listing)
   {
-    //
+    $listing->delete();
+
+    return redirect()->back()
+      ->with('success', 'Listing deleted successfully!');
   }
 }
