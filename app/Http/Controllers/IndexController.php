@@ -10,7 +10,7 @@ class IndexController extends Controller
   public function index()
   {
     return inertia(
-      'Index/index-page',
+      'Listing/IndexPage',
       [
         'message' => 'Hello'
       ]
@@ -19,6 +19,6 @@ class IndexController extends Controller
 
   public function show()
   {
-    return inertia('Index/show-page');
+    return inertia('Listing/ShowPage');
   }
 }

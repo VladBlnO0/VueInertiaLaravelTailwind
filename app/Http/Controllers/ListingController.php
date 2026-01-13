@@ -14,7 +14,7 @@ class ListingController extends Controller
   public function index()
   {
     return inertia(
-      'Listing/index-page',
+      'Listing/IndexPage',
       [
         'listings' => Listing::all()
       ]
@@ -26,7 +26,7 @@ class ListingController extends Controller
    */
   public function create()
   {
-    return inertia('Listing/create-page');
+    return inertia('Listing/CreatePage');
   }
 
   /**
@@ -56,7 +56,7 @@ class ListingController extends Controller
   public function show(Listing $listing)
   {
     return inertia(
-      'Listing/show-page',
+      'Listing/ShowPage',
       [
         'listing' => $listing
       ]
@@ -69,7 +69,7 @@ class ListingController extends Controller
   public function edit(Listing $listing)
   {
     return inertia(
-      'Listing/edit-page',
+      'Listing/EditPage',
       [
         'listing' => $listing
       ]
