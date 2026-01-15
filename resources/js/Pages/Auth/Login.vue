@@ -1,5 +1,5 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm, Link } from '@inertiajs/vue3';
 
 const form = useForm({
   email: null,
@@ -31,6 +31,11 @@ function login() {
 
       <div class="mt-4">
         <button class="btn-primary w-full" type="submit">Login</button>
+
+        <div class="mt-2 text-center">
+          <Link :href="route('user-account.create')" class="text-gray-500 text-sm">Register</Link>
+        </div>
+
       </div>
 
     </div>

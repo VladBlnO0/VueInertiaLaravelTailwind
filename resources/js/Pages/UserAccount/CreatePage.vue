@@ -1,5 +1,5 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm, Link } from '@inertiajs/vue3';
 
 const form = useForm({
   name: null,
@@ -10,7 +10,7 @@ const form = useForm({
 
 function register() {
   // eslint-disable-next-line no-undef
-  form.post('');
+  form.post(route('user-account.store'));
 }
 </script>
 
@@ -48,6 +48,10 @@ function register() {
 
       <div class="mt-4">
         <button class="btn-primary w-full" type="submit">Register</button>
+      </div>
+
+      <div class="mt-2 text-center">
+        <Link :href="route('login')" class="text-gray-500 text-sm">Login</Link>
       </div>
 
     </div>

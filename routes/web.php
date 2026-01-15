@@ -27,4 +27,5 @@ Route::delete('logout', [AuthController::class, 'destroy'])
 
 Route::resource('user-account', UserAccountController::class)->only([
     'create',
+    'store',
 ]);
