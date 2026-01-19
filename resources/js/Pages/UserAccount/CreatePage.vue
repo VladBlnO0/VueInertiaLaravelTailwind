@@ -1,5 +1,6 @@
 <script setup>
 import { useForm, Link } from '@inertiajs/vue3';
+import { route } from '@/ziggy';
 
 const form = useForm({
   name: null,
@@ -9,7 +10,6 @@ const form = useForm({
 })
 
 function register() {
-  // eslint-disable-next-line no-undef
   form.post(route('user-account.store'));
 }
 </script>

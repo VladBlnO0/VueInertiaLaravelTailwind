@@ -7,7 +7,6 @@ const form = useForm({
 })
 
 function login() {
-  // eslint-disable-next-line no-undef
   form.post(route('login.store'));
 }
 </script>

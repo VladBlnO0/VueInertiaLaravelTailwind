@@ -22,12 +22,21 @@ class ListingController extends \Illuminate\Routing\Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filters = $request->only([
+            'priceFrom',
+            'priceTo',
+            'beds',
+            'baths',
+            'areaFrom',
+            'areaTo',
+        ]);
+
         return inertia(
-            'Listing/IndexPage',
-            [
-                'listings' => Listing::orderByDesc('created_at')->paginate(9),
+            'Listing/IndexPage', [
+                'filters' => $filters,
+                'listings' => Listing::latest()->filter($filters)->paginate(9)->withQueryString(),
             ]
         );
     }
@@ -122,5 +131,4 @@ class ListingController extends \Illuminate\Routing\Controller
         return redirect()->back()
             ->with('success', 'Listing deleted successfully!');
     }
-
 }

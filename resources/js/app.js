@@ -3,8 +3,8 @@ import "./bootstrap";
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import MainLayout from "@/Layout/MainLayout.vue";
-import { ZiggyVue } from 'ziggy';
-import '../css/app.css';
+import { ZiggyVue } from "ziggy";
+import "../css/app.css";
 
 createInertiaApp({
   resolve: async (name) => {

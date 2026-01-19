@@ -1,18 +1,17 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
-import ListingAddress from '@/Components/ListingAddress.vue';
+import { Link } from "@inertiajs/vue3";
+import ListingAddress from "@/Components/ListingAddress.vue";
 import Box from "@/Components/UI/Box.vue";
-import ListingSpace from '@/Components/ListingSpace.vue';
-import Price from '@/Components/Price.vue';
-import { useMonthlyPayment } from '@/Composable/useMonthlyPayment';
+import ListingSpace from "@/Components/ListingSpace.vue";
+import Price from "@/Components/Price.vue";
+import { useMonthlyPayment } from "@/Composable/useMonthlyPayment";
 
-const props = defineProps({listing: Object});
+const props = defineProps({ listing: Object });
 const { monthlyPayment } = useMonthlyPayment(props.listing.price, 2.5, 25);
 </script>
 
 <template>
   <Box>
-
     <div>
       <Link :href="route('listing.show', listing.id)">
         <div class="flex gap-1 items-center">
@@ -27,12 +26,22 @@ const { monthlyPayment } = useMonthlyPayment(props.listing.price, 2.5, 25);
     </div>
 
     <div>
-      <Link :href="route('listing.edit', listing.id)" as="button" class="btn-primary mb-4">Edit Listing</Link>
+      <Link
+        :href="route('listing.edit', listing.id)"
+        as="button"
+        class="btn-primary mb-4"
+        >Edit Listing</Link
+      >
     </div>
 
     <div>
-      <Link :href="route('listing.destroy',{ listing: listing.id})" method="DELETE" as="button" class="btn-primary">Delete Listing</Link>
+      <Link
+        :href="route('listing.destroy', { listing: listing.id })"
+        as="button"
+        class="btn-primary"
+        method="DELETE"
+        >Delete Listing</Link
+      >
     </div>
-
   </Box>
 </template>
